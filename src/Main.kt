@@ -1,5 +1,5 @@
 fun main() {
-    //hola
+    //hola, esto es una prueba
     var sumaDado1 = 0
     var sumaDado2 = 0
 
