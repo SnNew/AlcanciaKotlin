@@ -18,7 +18,7 @@ fun main() {
     var opcion = -1
 
     do {
-        println("\M SISTEMA DE VOTACIÓN MUNICIPIO PREMIER =====")
+        println("\n SISTEMA DE VOTACIÓN MUNICIPIO PREMIER ")
         println("1. Votar por un candidato")
         println("2. Calcular costo de campaña de un candidato")
         println("3. Vaciar todas las urnas")
