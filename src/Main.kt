@@ -1,32 +1,56 @@
 fun main() {
-    //hola, esto es una prueba
-    var sumaDado1 = 0
-    var sumaDado2 = 0
+    println("APUESTA Y GANA")
+    println("Dependiendo del numero que salga puedes: ")
+    println("1 -> Duplicar tu dinero")
+    println("2 -> Perder la mitad de tu dinero")
+    println("3 -> Perder todo y terminar el juego")
 
-    var valorDado1 = 0
-    var valorDado2 = 0
+    print("Introduce la cantidad inicial para jugar: ")
+    var dinero = readLine()!!.toDouble()
 
-    println("=== Hora del juego ===")
-    println("Simulando el juego... Tirando los dos dados...")
+    var seguirJugando = true
 
-    for (tirada in 1..10){
-        valorDado1 = (1..6).random()
-        valorDado2 = (1..6).random()
+    while (seguirJugando && dinero > 0) {
+        println("Dinero actual: $dinero")
 
-        sumaDado1 += valorDado1
-        sumaDado2 += valorDado2
+        print("¿Quieres jugar esta ronda? (s/n): ")
+        val respuesta = readLine()!!.lowercase()
 
-        println("\nTirada # ${tirada}")
-        println("   Dado 1: $valorDado1")
-        println("   Dado 2: $valorDado2")
+        if (respuesta != "s") {
+            seguirJugando = false
+            continue
+        }
+
+        println("Generando número aleatorio...")
+        val numeroAleatorio = (1..3).random()
+        println("Ha salido el número: $numeroAleatorio")
+
+        when (numeroAleatorio) {
+            1 -> {
+                dinero *= 2
+                println("¡GENIAL! Has multiplicado tu dinero por dos")
+                println("Ahora tienes: $dinero")
+
+                print("¿Quieres seguir jugando? (s/n): ")
+                seguirJugando = readLine()!!.lowercase() == "s"
+            }
+            2 -> {
+                dinero /= 2
+                println("Has perdido la mitad de tu dinero")
+                println("Ahora tienes: $dinero")
+
+                print("¿Quieres seguir jugando? (s/n): ")
+                seguirJugando = readLine()!!.lowercase() == "s"
+            }
+            3 -> {
+                println("¡Oh no! Has perdido todo tu dinero")
+                dinero = 0.0
+                seguirJugando = false
+            }
+        }
     }
-    println("\n Resultados:")
-    println("Suma total dado 1: $sumaDado1")
-    println("Suma total dado 2: $sumaDado2")
 
-    when{
-        sumaDado1 > sumaDado2 -> println("\n El dado 1 es el ganador")
-        sumaDado2 > sumaDado1 -> println("\n El dado 2 es el ganador")
-        else -> println("Ambos dados obtuvieron la misma suma, es un empate.")
-    }
+    println("FIN DEL JUEGO")
+    println("Terminaste con: $dinero")
 }
+
